@@ -19,7 +19,6 @@ jobs:
     name: Build iOS (unsigned simulator app)
     runs-on: macos-14
 
-    # Especifica que todos los pasos se ejecuten dentro de Repo90-main
     defaults:
       run:
         working-directory: Repo90-main
@@ -39,7 +38,9 @@ jobs:
           xcode-version: '16.2'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install -D typescript
 
       - name: Build web app
         run: npm run build
