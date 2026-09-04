@@ -34,22 +34,26 @@ jobs:
           xcode-version: '16.2'
 
       - name: Install dependencies
+        working-directory: Repo90-main
         run: npm install
 
       - name: Build web app
+        working-directory: Repo90-main
         run: npm run build
 
       - name: Create iOS platform if missing
+        working-directory: Repo90-main
         run: |
           if [ ! -d "ios" ]; then
             npx cap add ios
           fi
 
       - name: Sync Capacitor iOS
+        working-directory: Repo90-main
         run: npx cap sync ios
 
       - name: Build iOS Simulator app
-        working-directory: ios/App
+        working-directory: Repo90-main/ios/App
         run: |
           xcodebuild \
             -workspace App.xcworkspace \
@@ -63,6 +67,7 @@ jobs:
             build
 
       - name: Package simulator app
+        working-directory: Repo90-main
         run: |
           mkdir -p artifacts
           APP_PATH=$(find ios/App/build/Build/Products -maxdepth 2 -type d -name 'App.app' | head -n 1)
@@ -76,6 +81,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: recomposicion-90-ios-simulator
-          path: artifacts/recomposicion-90-ios-simulator.zip
+          path: Repo90-main/artifacts/recomposicion-90-ios-simulator.zip
           if-no-files-found: error
           retention-days: 14
