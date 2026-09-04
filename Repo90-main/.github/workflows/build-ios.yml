@@ -38,7 +38,9 @@ jobs:
           xcode-version: '16.2'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install -D typescript
 
       - name: Build web app
         run: npm run build
@@ -46,6 +48,7 @@ jobs:
       - name: Create iOS platform if missing
         run: |
           if [ ! -d "ios" ]; then
+            npx typescript --version || npm install -D typescript
             npx cap add ios
           fi
 
