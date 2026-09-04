@@ -1,0 +1,109 @@
+/* Mini utilidades propias — reemplaza a Tailwind CDN para no depender
+   de un script externo que falla en algunos navegadores/webviews. */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* layout */
+.flex { display: flex; }
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.flex-1 { flex: 1 1 0%; }
+.flex-col { flex-direction: column; }
+.flex-shrink-0 { flex-shrink: 0; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-baseline { align-items: baseline; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+.w-full { width: 100%; }
+.w-4 { width: 1rem; }
+.w-5 { width: 1.25rem; }
+.h-full { height: 100%; }
+.h-2 { height: 0.5rem; }
+.h-4 { height: 1rem; }
+.h-5 { height: 1.25rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* gap */
+.gap-1 { gap: 0.25rem; }
+.gap-1\.5 { gap: 0.375rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-x-4 { column-gap: 1rem; }
+.gap-y-2\.5 { row-gap: 0.625rem; }
+
+/* spacing (padding) */
+.p-1 { padding: 0.25rem; }
+.p-3\.5 { padding: 0.875rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
+.pb-1 { padding-bottom: 0.25rem; }
+.pb-6 { padding-bottom: 1.5rem; }
+.pt-1 { padding-top: 0.25rem; }
+.pt-3 { padding-top: 0.75rem; }
+.pt-4 { padding-top: 1rem; }
+
+/* spacing (margin) */
+.mb-0\.5 { margin-bottom: 0.125rem; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mt-0\.5 { margin-top: 0.125rem; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-3 { margin-top: 0.75rem; }
+
+/* space-between children (vertical stacks) */
+.space-y-1\.5 > * + * { margin-top: 0.375rem; }
+.space-y-2 > * + * { margin-top: 0.5rem; }
+.space-y-2\.5 > * + * { margin-top: 0.625rem; }
+.space-y-3 > * + * { margin-top: 0.75rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-5 > * + * { margin-top: 1.25rem; }
+
+/* typography */
+.text-xs { font-size: 0.75rem; line-height: 1.2rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.3rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.5rem; }
+.text-4xl { font-size: 2.25rem; line-height: 2.4rem; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.capitalize { text-transform: capitalize; }
+
+/* borders / radius */
+.rounded-full { border-radius: 9999px; }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.outline-none { outline: none; }
+
+/* effects / transitions */
+.transition { transition-property: all; transition-duration: 150ms; transition-timing-function: ease; }
+.transition-all { transition-property: all; transition-timing-function: ease; }
+.duration-300 { transition-duration: 300ms; }
+button { cursor: pointer; background: none; border: none; padding: 0; font: inherit; }
+button:active.active\:scale-95,
+.active\:scale-95:active { transform: scale(0.95); }
+.active\:scale-\[0\.98\]:active { transform: scale(0.98); }
+button:disabled.disabled\:opacity-40,
+.disabled\:opacity-40:disabled { opacity: 0.4; }
+.disabled\:opacity-50:disabled { opacity: 0.5; }
+.disabled\:opacity-60:disabled { opacity: 0.6; }
+
+input { font: inherit; }

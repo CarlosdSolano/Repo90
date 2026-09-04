@@ -1,0 +1,30 @@
+{
+  "name": "recomposicion-90",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Recomposición 90 - aplicación multiplataforma de entrenamiento y nutrición",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "cap:sync": "npm run build && npx cap sync",
+    "android": "npm run build && npx cap sync android && npx cap open android",
+    "ios": "npm run build && npx cap add ios && npx cap sync ios && npx cap open ios",
+    "ios:sync": "npm run build && npx cap sync ios",
+    "cap:add:ios": "npx cap add ios",
+    "cap:add:android": "npx cap add android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/ios": "^7.4.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3",
+    "vite": "^7.1.4",
+    "@vitejs/plugin-react": "^5.0.2"
+  }
+}
