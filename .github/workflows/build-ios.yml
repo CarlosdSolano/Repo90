@@ -19,10 +19,6 @@ jobs:
     name: Build iOS (unsigned simulator app)
     runs-on: macos-14
 
-    defaults:
-      run:
-        working-directory: Repo90-main
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,9 +34,7 @@ jobs:
           xcode-version: '16.2'
 
       - name: Install dependencies
-        run: |
-          npm install
-          npm install -D typescript
+        run: npm install
 
       - name: Build web app
         run: npm run build
@@ -55,7 +49,7 @@ jobs:
         run: npx cap sync ios
 
       - name: Build iOS Simulator app
-        working-directory: Repo90-main/ios/App
+        working-directory: ios/App
         run: |
           xcodebuild \
             -workspace App.xcworkspace \
@@ -82,6 +76,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: recomposicion-90-ios-simulator
-          path: Repo90-main/artifacts/recomposicion-90-ios-simulator.zip
+          path: artifacts/recomposicion-90-ios-simulator.zip
           if-no-files-found: error
           retention-days: 14
