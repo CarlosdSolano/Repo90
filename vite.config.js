@@ -1,17 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import fs from 'fs';
 
-// Detecta si index.html está en la raíz o dentro de Repo90-main
-const isNested = fs.existsSync(path.resolve(__dirname, 'Repo90-main/index.html'));
-const rootDir = isNested ? path.resolve(__dirname, 'Repo90-main') : __dirname;
-
+// base: './' hace que todas las rutas de los assets generados sean relativas.
+// Esto es imprescindible para que el build funcione igual:
+//  - servido en la raíz de un dominio
+//  - servido en una subcarpeta (p. ej. GitHub Pages: usuario.github.io/repo/)
+//  - empaquetado dentro de una app nativa con Capacitor (file:// en Android/iOS)
 export default defineConfig({
+  base: './',
   plugins: [react()],
-  root: rootDir,
   build: {
-    outDir: path.resolve(__dirname, 'dist'),
+    outDir: 'dist',
     emptyOutDir: true,
   },
 });

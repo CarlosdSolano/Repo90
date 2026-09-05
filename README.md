@@ -4,9 +4,29 @@ Aplicación multiplataforma de entrenamiento, nutrición y seguimiento de progre
 
 ## Plataformas
 
-- Web / PWA
+- Web / PWA (instalable en Android, iOS, y cualquier sistema operativo con navegador moderno)
 - Android (APK/AAB)
 - iOS (Capacitor + Xcode)
+
+## Instalar la app en el celular (recomendado, funciona en cualquier SO)
+
+La forma más simple y universal de "instalar" la app es como **PWA (Progressive Web App)**:
+se ve y se comporta como una app nativa (ícono en pantalla de inicio, pantalla completa,
+funciona offline) sin pasar por Play Store ni App Store, y funciona igual en Android, iOS,
+o cualquier otro sistema operativo con un navegador moderno.
+
+1. Activa GitHub Pages en este repositorio: **Settings > Pages > Source: GitHub Actions**.
+2. Haz push a `main` (o ejecuta manualmente `Actions > Deploy PWA to GitHub Pages`).
+3. Abre la URL publicada (`https://<usuario>.github.io/<repositorio>/`) desde el celular:
+   - **Android (Chrome)**: menú ⋮ > "Instalar app" o "Añadir a pantalla de inicio".
+   - **iOS (Safari)**: botón Compartir > "Añadir a pantalla de inicio".
+   - **Otros navegadores/SO**: opción equivalente "Instalar" o "Añadir a inicio".
+
+Una vez instalada, la app abre en pantalla completa con su propio ícono, igual que una
+app nativa, y sigue funcionando sin conexión gracias al Service Worker (`public/sw.js`).
+
+Si además quieres un `.apk`/`.aab` (Android) o `.ipa` (iOS) instalables como paquete nativo,
+usa los workflows de Capacitor descritos más abajo.
 
 ## Requisitos de desarrollo
 
@@ -47,6 +67,14 @@ npx cap open ios
 En Xcode selecciona un iPhone o un simulador y pulsa **Run**.
 
 ## GitHub Actions
+
+### Web / PWA
+
+`Actions > Deploy PWA to GitHub Pages`
+
+Compila la web y la publica en GitHub Pages para que quede instalable desde cualquier
+celular vía navegador (ver sección de instalación más arriba). Se ejecuta automáticamente
+en cada push a `main`.
 
 ### Android
 

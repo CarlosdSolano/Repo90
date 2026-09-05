@@ -1,4 +1,4 @@
-const CACHE_NAME = "recomposicion-90-v2";
+const CACHE_NAME = "recomposicion-90-v3";
 const BASE = new URL("./", self.registration.scope).pathname;
 const shell = (file) => `${BASE}${file}`;
 const APP_SHELL = [shell(""), shell("index.html"), shell("manifest.webmanifest"), shell("icons/icon-192.png"), shell("icons/icon-512.png")];
