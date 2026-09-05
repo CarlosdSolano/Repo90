@@ -41,39 +41,7 @@ jobs:
         working-directory: Repo90-main
         run: npm run build
 
-      - name: Debug Capacitor config
-        working-directory: Repo90-main
-        run: |
-          echo "Directorio actual:"
-          pwd
-          echo ""
-          echo "Archivos de config de Capacitor encontrados:"
-          find . -maxdepth 2 -iname "capacitor.config.*"
-          echo ""
-          echo "Contenido de capacitor.config.json (si existe):"
-          cat capacitor.config.json 2>/dev/null || echo "No existe capacitor.config.json en esta carpeta"
-
-      - name: Remove stray Capacitor config (ts/js) if present
-        working-directory: Repo90-main
-        run: |
-          # Capacitor CLI prioriza .ts/.js sobre .json. Si quedó un config
-          # .ts/.js vacío o sin appId de un "cap init" anterior, lo elimina
-          # para que use el capacitor.config.json correcto del repo.
-          if [ -f "capacitor.config.ts" ]; then
-            echo "Se encontró capacitor.config.ts, verificando appId..."
-            if ! grep -q "appId" capacitor.config.ts; then
-              echo "capacitor.config.ts no tiene appId, eliminando para usar el .json"
-              rm capacitor.config.ts
-            fi
-          fi
-          if [ -f "capacitor.config.js" ]; then
-            echo "Se encontró capacitor.config.js, verificando appId..."
-            if ! grep -q "appId" capacitor.config.js; then
-              echo "capacitor.config.js no tiene appId, eliminando para usar el .json"
-              rm capacitor.config.js
-            fi
-          fi
-- name: Create iOS platform if missing
+      - name: Create iOS platform if missing
         working-directory: Repo90-main
         run: |
           if [ ! -f "capacitor.config.json" ] && [ ! -f "capacitor.config.ts" ]; then
