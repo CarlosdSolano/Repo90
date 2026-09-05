@@ -73,10 +73,12 @@ jobs:
               rm capacitor.config.js
             fi
           fi
-
-      - name: Create iOS platform if missing
+- name: Create iOS platform if missing
         working-directory: Repo90-main
         run: |
+          if [ ! -f "capacitor.config.json" ] && [ ! -f "capacitor.config.ts" ]; then
+            npx cap init "recomposicion-90" "com.recomposicion90.app" --web-dir "dist"
+          fi
           if [ ! -d "ios" ]; then
             npx cap add ios
           fi
